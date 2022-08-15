@@ -30,17 +30,23 @@ function App() {
 
   return (  
     <div className="App">
-        <form onSubmit={handleSubmit}>
-            <input id="search" type="text" placeholder="Search by location ID" />
-            <button type="submit">Search</button>
-        </form>
-        <LocationInfo location={location}/>
-        <div>
-          {
-            location?.residents.map(url => (
-              <CardResident key={url} url={url}/>
-            ))
-          }
+        <header className="Heeader">
+          <img className='Header_img1' src="/src/assets/rick&morty.png" alt="Rick and Morty"/>
+          <img className='Header_img2' src="/src/assets/header_title.png" alt="Rick and Morty"/>
+        </header>
+        <div className="container">
+          <form onSubmit={handleSubmit}>
+              <input id="search" type="text" placeholder="Search by location ID" />
+              <button type="submit">Search</button>
+          </form>
+          <LocationInfo location={location}/>
+          <div className='card__container'>
+            {
+              location?.residents.map(url => (
+                <CardResident key={url} url={url}/>
+              ))
+            }
+          </div>
         </div>
     </div>
   )

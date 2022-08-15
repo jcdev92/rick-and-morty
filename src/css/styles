@@ -1,0 +1,26 @@
+/* Rectangle 1 */
+.header {
+    position: absolute;
+    width: 1440px;
+    height: 384px;
+    background: url("/src/assets/rick&morty.png") no-repeat;
+    background-size: cover;
+}
+
+/* image 2 */
+.header__title {
+    position: absolute;
+    width: 454px;
+    height: 176px;
+    left: 493px;
+    top: 48px;
+    background: url("/src/assets/header_title.png") no-repeat;
+}
+
+/* frame 1 */
+.frame1 {
+    position: relative;
+    width: 1440px;
+    height: 3821px;
+    background: #05292E;
+}
