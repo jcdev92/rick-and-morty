@@ -28,11 +28,13 @@ function App() {
   }
 
 
+
+
   return (  
     <div className="App">
         <header className="Heeader">
-          <img className='Header_img1' src="/src/assets/rick&morty.png" alt="Rick and Morty"/>
-          <img className='Header_img2' src="/src/assets/header_title.png" alt="Rick and Morty"/>
+          <img className='Header_img1' src="https://i.ibb.co/r0Pr8fS/rick-morty.png" alt="Rick and Morty"/>
+          <img className='Header_img2' src="https://i.ibb.co/J7sTYD0/header-title.png"g alt="Rick and Morty"/>
         </header>
         <div className="container">
           <form onSubmit={handleSubmit}>
