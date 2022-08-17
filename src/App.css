@@ -7,6 +7,8 @@
 
 body {
     margin: 0;
+    background: #05292E;
+    width 100vw:
 }
 
 h1, h2, h3 {
@@ -14,7 +16,7 @@ h1, h2, h3 {
 }
 
 .App {
-    width: 100vw;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -26,7 +28,7 @@ h1, h2, h3 {
 }
 
 .Header, .Header_img1 {
-    width: 100vw;
+    width: 99vw;
     height: auto;
     position: relative;
 }
@@ -117,3 +119,30 @@ h1, h2, h3 {
     color: #7E7E7E;
 
 }
+
+.pagination {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 5px;
+    background: #062226;
+}
+
+.pagination button {
+    width: auto;
+    height: auto;
+    border: none;
+    background: #062226;
+    color: #fff;
+    font-size: 24px;
+    line-height: 28px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import LocationInfo from './components/LocationInfo'
 import CardResident from './components/CardResident'
+import Pagination from './components/Pagination'
 
 
 
@@ -27,14 +28,21 @@ function App() {
     setSearchInfo(e.target.search.value)
   }
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postPerPage, setPostPerPage] = useState(8)
 
+  const lastPostIndex = currentPage * postPerPage
+  const firstPostIndex = lastPostIndex - postPerPage
+
+  const currentPosts = location?.residents.slice(firstPostIndex, lastPostIndex)
+  const totalPosts = location?.residents.length
 
 
   return (  
     <div className="App">
         <header className="Heeader">
           <img className='Header_img1' src="https://i.ibb.co/r0Pr8fS/rick-morty.png" alt="Rick and Morty"/>
-          <img className='Header_img2' src="https://i.ibb.co/J7sTYD0/header-title.png"g alt="Rick and Morty"/>
+          <img className='Header_img2' src="https://i.ibb.co/J7sTYD0/header-title.png" alt="Rick and Morty"/>
         </header>
         <div className="container">
           <form onSubmit={handleSubmit}>
@@ -43,12 +51,13 @@ function App() {
           </form>
           <LocationInfo location={location}/>
           <div className='card__container'>
-            {
-              location?.residents.map(url => (
+            {currentPosts?.map((url) => {
+              return (
                 <CardResident key={url} url={url}/>
-              ))
-            }
+              )
+            } )}
           </div>
+          <Pagination postPerPage={postPerPage} totalPosts={totalPosts} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
         </div>
     </div>
   )
