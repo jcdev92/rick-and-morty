@@ -145,4 +145,9 @@ h1, h2, h3 {
     cursor: pointer;
 }
 
+.pagination button.active {
+    background: #fff;
+    color: #062226;
+}
+
 
