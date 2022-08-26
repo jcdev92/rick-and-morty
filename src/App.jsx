@@ -1,7 +1,7 @@
 import './App.css'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import LocationInfo from './components/LocationInfo'
+import LocationById from './components/LocationById'
 import CardResident from './components/CardResident'
 import Pagination from './components/Pagination'
 
@@ -10,22 +10,40 @@ import Pagination from './components/Pagination'
 function App() {
   const [location, setLocation] = useState()
   const [searchInfo, setSearchInfo] = useState('')
+  const [locationByName, setLocationByName] = useState()
+  const [searchByName, setSearchByName] = useState('')
   const randomLocation = Math.floor(Math.random() * 126)
   
   useEffect(() => {
     let selectedLocation
     searchInfo === '' ? selectedLocation = randomLocation : selectedLocation = searchInfo
     const URL = `https://rickandmortyapi.com/api/location/${selectedLocation}`
+    console.log(URL)
     axios.get(URL)
         .then((res) => {setLocation(res.data)})
         .catch((err) => {console.log(err)})
     }, [searchInfo])
 
+  useEffect(() => {
+    let selectedLocation
+    searchByName === '' ? selectedLocation = randomLocation : selectedLocation = searchByName
+    const URL = `https://rickandmortyapi.com/api/location/${selectedLocation}`
+    console.log(URL)
+    axios.get(URL)
+        .then((res) => {setLocationByName(res.data)})
+        .catch((err) => {console.log(err)})
+    }, [searchByName])
 
-  
+
+    console.log(locationByName)
+
+
   const handleSubmit = e => {
     e.preventDefault()
-    setSearchInfo(e.target.search.value)
+    const locationId = e.target.search.value;
+    const locationName = `?name=${e.target.search.value}`;
+    // check if location id is a number, else location name is a string
+    isNaN(locationId) ? setLocationByName(locationName) : setSearchInfo(locationId)
   }
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -49,7 +67,7 @@ function App() {
               <input id="search" type="text" placeholder="Search by location ID" />
               <button type="submit">Search</button>
           </form>
-          <LocationInfo location={location}/>
+          <LocationById location={location}/>
           <div className='card__container'>
             {currentPosts?.map((url) => {
               return (

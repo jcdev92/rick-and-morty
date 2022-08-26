@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LocationInfo = ({location}) => {
+const LocationById = ({location}) => {
   return (
     <article className='location'>
         <h1>Location</h1>
@@ -15,4 +15,4 @@ const LocationInfo = ({location}) => {
   )
 }
 
-export default LocationInfo
+export default LocationById
