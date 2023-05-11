@@ -1,37 +1,20 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import LocationById from "./components/LocationById";
 import CardResident from "./components/CardResident";
 import Pagination from "./components/Pagination";
+import locationEffect from "./effects/locationEffect";
 
 function App() {
-  const [location, setLocation] = useState();
   const [searchInfo, setSearchInfo] = useState("");
-  const randomLocation = Math.floor(Math.random() * 126);
-
-  useEffect(() => {
-    let selectedLocation;
-    searchInfo === ""
-      ? (selectedLocation = randomLocation)
-      : (selectedLocation = searchInfo);
-    const URL = `https://rickandmortyapi.com/api/location/${selectedLocation}`;
-    console.log(URL);
-    axios
-      .get(URL)
-      .then((res) => {
-        setLocation(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [searchInfo]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const locationId = e.target.search.value;
     setSearchInfo(locationId);
   };
+
+  const location = locationEffect(searchInfo);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(8);
