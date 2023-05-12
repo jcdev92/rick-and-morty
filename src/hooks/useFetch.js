@@ -1,19 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const useFetch = url => {
+const useFetch = (url, searchInfo) => {
+  const [response, setResponse] = useState();
 
-    const [response, setResponse] = useState();
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((res) => setResponse(res.data))
+      .catch((err) => console.log(err));
+  }, [searchInfo]);
 
-    useEffect(() => {
-        axios.get(url)
-            .then(res => setResponse(res.data))
-            .catch(err => console.log(err));
-    }
-    , []);
-
-    return response;
-
-}
+  return response;
+};
 
 export default useFetch;
