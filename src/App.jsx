@@ -1,8 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import LocationById from "./components/LocationById";
+import LocationCard from "./components/LocationCard";
 import CardResident from "./components/CardResident";
-import Pagination from "./components/Pagination";
 import locationEffect from "./effects/locationEffect";
 
 function App() {
@@ -10,24 +9,21 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const locationId = e.target.search.value;
-    setSearchInfo(locationId);
+    const input = e.target.search.value;
+    setSearchInfo(input);
   };
 
-  const location = locationEffect(searchInfo);
+  let location = locationEffect(searchInfo);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(8);
+  const handleAllLocations = () => {
+    setSearchInfo("");
+  };
 
-  const lastPostIndex = currentPage * postPerPage;
-  const firstPostIndex = lastPostIndex - postPerPage;
-
-  const currentPosts = location?.residents.slice(firstPostIndex, lastPostIndex);
-  const totalPosts = location?.residents.length;
+  
 
   return (
     <div className="App">
-      <header className="Heeader">
+      <header className="Header">
         <img
           className="Header_img1"
           src="https://i.ibb.co/r0Pr8fS/rick-morty.png"
@@ -41,21 +37,26 @@ function App() {
       </header>
       <div className="container">
         <form onSubmit={handleSubmit}>
-          <input id="search" type="text" placeholder="Search by location ID" />
+          <input
+            id="search"
+            type="text"
+            placeholder="Search by location ID or Name"
+          />
           <button type="submit">Search</button>
         </form>
-        <LocationById location={location} />
+        <button className="all-locations" onClick={handleAllLocations}>
+          all locations
+        </button>
+        <LocationCard location={location} />
         <div className="card__container">
-          {currentPosts?.map((url) => {
-            return <CardResident key={url} url={url} />;
-          })}
+          {location?.residents
+            ? location?.residents.map((url) => (
+                <CardResident key={url} url={url} />
+              ))
+            : location?.results[0].residents.map((url) => (
+                <CardResident key={url} url={url} />
+              ))}
         </div>
-        <Pagination
-          postPerPage={postPerPage}
-          totalPosts={totalPosts}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
       </div>
     </div>
   );

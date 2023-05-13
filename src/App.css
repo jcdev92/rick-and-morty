@@ -8,7 +8,6 @@
 body {
     margin: 0;
     background: #05292E;
-    width 100vw:
 }
 
 h1, h2, h3 {
@@ -28,7 +27,7 @@ h1, h2, h3 {
 }
 
 .Header, .Header_img1 {
-    width: 99vw;
+    width: 100%;
     height: auto;
     position: relative;
 }
