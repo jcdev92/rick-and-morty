@@ -9,7 +9,7 @@ const NavBar = ({ setSearchInfo }) => {
     <div className="nav-bar">
       <Search setSearchInfo={setSearchInfo} />
       <button className="all-locations" onClick={handleAllLocations}>
-        all locations
+        <i class="fa-solid fa-globe"></i>
       </button>
     </div>
   );
