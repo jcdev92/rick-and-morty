@@ -8,7 +8,7 @@ const NavBar = ({ setSearchInfo }) => {
   return (
     <div className="nav-bar">
       <Search setSearchInfo={setSearchInfo} />
-      <button className="all-locations" onClick={handleAllLocations}>
+      <button className="all_btn" onClick={handleAllLocations}>
         <i class="fa-solid fa-globe"></i>
       </button>
     </div>
