@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useFetch from "../hooks/useFetch";
+import getTypes from "../helper/getTypes";
 
 const locationEffect = (searchInfo) => {
   let [location, setLocation] = useState();
@@ -14,28 +15,13 @@ const locationEffect = (searchInfo) => {
 
   // if thes search info is a number it will return the location that matches the id location, otherwise if is a word it will return the location that matches the name of the location
 
-  const typesOfLocations = [
-    "planet",
-    "microverse",
-    "tv",
-    "resort",
-    "space station",
-    "spacecraft",
-    "dream",
-    "dimension",
-    "unknown",
-    "menagerie",
-    "box",
-    "arcade",
-    "daycare",
-    "dwarf planet (Celestial Dwarf)",
-    "teenyverse",
-  ];
+  const typesOfLocations = getTypes();
+  console.log(typesOfLocations);
 
   // switch url depending on the searchInfo
 
   if (typesOfLocations.includes(searchInfo)) {
-    url = `https://rickandmortyapi.com/api/location/?type=${param}`;
+    url = `https://rickandmortyapi.com/api/location/?type=${param}`;;
   } else if (isNaN(searchInfo)) {
     url = `https://rickandmortyapi.com/api/location/?name=${param}`;
   } else if (searchInfo === "") {

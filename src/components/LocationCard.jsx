@@ -10,7 +10,7 @@ const LocationCard = ({ location }) => {
           <span>Dimension:</span> <br></br>{" "}
           {location?.dimension
             ? location?.dimension
-            : location?.results[0].dimension}
+            : location?.results?.dimension}
         </li>
         <li>
           <span>Type: </span> <br></br>{" "}

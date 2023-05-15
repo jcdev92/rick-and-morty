@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
-import LocationCard from "./components/LocationCard";
 import locationEffect from "./effects/locationEffect";
+import LocationCard from "./components/LocationCard";
 import CardContainer from "./components/CardContainer";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
@@ -15,7 +15,7 @@ function App() {
       <Header />
       <div className="container">
         <NavBar setSearchInfo={setSearchInfo} />
-        {locations?.info?.count >= 120 ? (
+        {locations?.info?.count > 1 ? (
           locations?.results.map((location) => (
             <div key={location.url} className="card__container">
               <LocationCard location={location} />

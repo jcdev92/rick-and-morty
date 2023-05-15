@@ -19,7 +19,7 @@ const Search = ({ setSearchInfo }) => {
       <input
         id="search"
         type="text"
-        placeholder="Search by location ID or Name"
+        placeholder="Search locations by ID, types or name"
         onChange={(e) => setInputValue(e.target.value)}
         value={inputValue}
       />
