@@ -9,7 +9,7 @@ const useFetch = (url, searchInfo) => {
       .get(url)
       .then((res) => setResponse(res.data))
       .catch((err) => console.log(err));
-  }, [searchInfo]);
+  }, [url, searchInfo]);
 
   return response;
 };

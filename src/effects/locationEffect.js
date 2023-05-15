@@ -1,27 +1,15 @@
-import { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import getTypes from "../helper/getTypes";
 
-const locationEffect = (searchInfo) => {
-  let [location, setLocation] = useState();
-
-  const randomLocation = Math.floor(Math.random() * 126);
-
-  let param;
-  let url;
-
-  // if searchInfo is empty, it will return a random location from the API, otherwise it will return the location that matches the searchInfo
-  searchInfo === "" ? (param = randomLocation) : (param = searchInfo);
-
-  // if thes search info is a number it will return the location that matches the id location, otherwise if is a word it will return the location that matches the name of the location
+const locationEffect = (url, searchInfo) => {
+  let param = searchInfo;
 
   const typesOfLocations = getTypes();
-  console.log(typesOfLocations);
 
   // switch url depending on the searchInfo
 
   if (typesOfLocations.includes(searchInfo)) {
-    url = `https://rickandmortyapi.com/api/location/?type=${param}`;;
+    url = `https://rickandmortyapi.com/api/location/?type=${param}`;
   } else if (isNaN(searchInfo)) {
     url = `https://rickandmortyapi.com/api/location/?name=${param}`;
   } else if (searchInfo === "") {
@@ -30,11 +18,9 @@ const locationEffect = (searchInfo) => {
     url = `https://rickandmortyapi.com/api/location/${param}`;
   }
 
-  console.log(url);
 
-  location = useFetch(url, searchInfo);
 
-  return location;
+  return useFetch(url, searchInfo);
 };
 
 export default locationEffect;

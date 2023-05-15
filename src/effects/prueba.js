@@ -1,12 +1,10 @@
-let input = "cuarenta";
+// let input = "cuarenta";
 
 // check if input is a number
-const check = (input) =>
-  isNaN(input) ? console.log("not a number") : console.log("is a number");
+// const check = (input) =>
+//   isNaN(input) ? console.log("not a number") : console.log("is a number");
 
-check(input);
-
-
+// check(input);
 
 // old pagination made by me
 
@@ -20,12 +18,14 @@ check(input);
 // const totalPosts = location?.residents.length;
 
 // the old card pagination component
-{/* <Pagination
+{
+  /* <Pagination
 postPerPage={postPerPage}
 totalPosts={totalPosts}
 setCurrentPage={setCurrentPage}
 currentPage={currentPage}
-/> */}
+/> */
+}
 
 // import React from "react";
 
@@ -60,5 +60,3 @@ currentPage={currentPage}
 // };
 
 // export default Pagination;
-
-
