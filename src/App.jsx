@@ -12,7 +12,7 @@ function App() {
   const [url, setUrl] = useState("https://rickandmortyapi.com/api/location");
   const { data, error, loading } = useFetch(url);
   const [searchInfo, setSearchInfo] = useState("");
-  let uri = getUrl(searchInfo);
+  let uri = getUrl(searchInfo, data);
 
   useEffect(() => {
     setUrl(uri);

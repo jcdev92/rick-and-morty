@@ -1,31 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useFetch from "../hooks/useFetch";
 
 const CardResident = ({ url }) => {
-  const resident = useFetch(url);
+  const { data, loading, error } = useFetch(url);
+
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <h1>Something went wrong!</h1>;
 
   return (
     <div className="card__resident">
       <header>
-        <img src={resident?.image} alt={`image of ${resident?.name}`} />
+        <img src={data?.image} alt={`image of ${data?.name}`} />
         <div>
           <div className="circle"></div>
-          <h3>{resident?.name}</h3>
+          <h3>{data?.name}</h3>
         </div>
       </header>
       <div className="resident">
         <ul>
           <li>
-            <span>Species:</span> {resident?.species}
+            <span>Species:</span> {data?.species}
           </li>
           <li>
-            <span>Origin:</span> {resident?.origin.name}
+            <span>Origin:</span> {data?.origin?.name}
           </li>
           <li>
-            <span>Episodes where appear:</span> {resident?.episode.length}
+            <span>Episodes where appear:</span> {data?.episode?.length}
           </li>
           <li>
-            <span>Status:</span> {resident?.status}
+            <span>Status:</span> {data?.status}
           </li>
         </ul>
       </div>

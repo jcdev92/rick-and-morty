@@ -1,10 +1,10 @@
 import getTypes from "../helper/getTypes";
 
-const getUrl = (searchInfo) => {
+const getUrl = (searchInfo, data) => {
   let url = "";
   let param = searchInfo;
 
-  const typesOfLocations = getTypes();
+  const typesOfLocations = getTypes(data);
 
   // switch url depending on the searchInfo
 
