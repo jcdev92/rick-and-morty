@@ -6,14 +6,15 @@ import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Pagination from "./components/Pagination";
 import getUrl from "./helper/urlHelper";
+import useFetch from "./hooks/useFetch";
 
 function App() {
-  const [searchInfo, setSearchInfo] = useState("");
   const [url, setUrl] = useState("https://rickandmortyapi.com/api/location");
   const { data, error, loading } = useFetch(url);
+  const [searchInfo, setSearchInfo] = useState("");
+  let uri = getUrl(searchInfo);
 
   useEffect(() => {
-    let uri = getUrl(searchInfo);
     setUrl(uri);
   }, [searchInfo]);
 

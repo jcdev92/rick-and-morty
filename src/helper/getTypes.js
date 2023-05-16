@@ -1,10 +1,7 @@
-import useFetch from "../hooks/useFetch";
 // getting the types of the locations
 
-const url = "https://rickandmortyapi.com/api/location";
 
-const getTypes = () => {
-  const data = useFetch(url);
+const getTypes = (data) => {
   const types = [];
   data &&
     data.results.forEach((location) => {
