@@ -7,7 +7,7 @@ const Pagination = ({ pages, next, prev, setUrl }) => {
   }
 
   const handleNext = () => {
-    setUrl(next);
+    next && setUrl(next);
   };
   const handlePrev = () => {
     prev && setUrl(prev);
