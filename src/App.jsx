@@ -1,44 +1,54 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import locationEffect from "./effects/locationEffect";
 import LocationCard from "./components/LocationCard";
 import CardContainer from "./components/CardContainer";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Pagination from "./components/Pagination";
+import getUrl from "./helper/urlHelper";
 
 function App() {
   const [searchInfo, setSearchInfo] = useState("");
-  const [url, setUrl] = useState("https://rickandmortyapi.com/api/location/");
-  let locations = locationEffect(url, searchInfo);
+  const [url, setUrl] = useState("https://rickandmortyapi.com/api/location");
+  const { data, error, loading } = useFetch(url);
+
+  useEffect(() => {
+    let uri = getUrl(searchInfo);
+    setUrl(uri);
+  }, [searchInfo]);
+
   console.log(url);
+
+  if (error) return <h1>Something went wrong!</h1>;
+
+  if (loading) return <h1>Loading...</h1>;
 
   return (
     <div className="App">
       <Header />
       <div className="container">
         <NavBar setSearchInfo={setSearchInfo} />
-        {locations?.info?.count > 1 && (
+        {data?.info?.count > 1 && (
           <>
-            {locations.results?.map((location) => (
+            {data.results?.map((location) => (
               <div key={location.url} className="card__container">
                 <LocationCard location={location} />
               </div>
             ))}
-            {locations.info?.pages > 1 && (
+            {data.info?.pages > 1 && (
               <Pagination
-                pages={locations.info.pages}
-                next={locations.info.next}
-                prev={locations.info.prev}
+                pages={data.info.pages}
+                next={data.info.next}
+                prev={data.info.prev}
                 setUrl={setUrl}
               />
             )}
           </>
         )}
-        {locations?.info?.count === 1 && (
+        {data?.info?.count === 1 && (
           <div className="card__container">
-            <LocationCard location={locations} />
-            <CardContainer location={locations} />
+            <LocationCard location={data} />
+            <CardContainer location={data} />
           </div>
         )}
       </div>
