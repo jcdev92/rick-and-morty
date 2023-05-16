@@ -2,10 +2,7 @@ import React from "react";
 import useFetch from "../hooks/useFetch";
 
 const CardResident = ({ url }) => {
-  const { data, loading, error } = useFetch(url);
-
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Something went wrong!</h1>;
+  const { data } = useFetch(url);
 
   return (
     <div className="card__resident">

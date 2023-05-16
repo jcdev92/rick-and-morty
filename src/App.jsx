@@ -20,8 +20,6 @@ function App() {
 
   console.log(url);
 
-  if (error) return <h1>Something went wrong!</h1>;
-
   if (loading) return <h1>Loading...</h1>;
 
   return (
@@ -61,6 +59,9 @@ function App() {
               <LocationCard location={data} />
               <CardContainer location={data} />
             </div>
+          )) ||
+          (error && (
+            <h1>It's seems like the {`${searchInfo}`} isn't there try again</h1>
           ))}
       </div>
     </div>
