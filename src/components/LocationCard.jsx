@@ -20,7 +20,7 @@ const LocationCard = ({ location }) => {
           <span>Residents: </span> <br></br>{" "}
           {location?.residents
             ? location?.residents.length
-            : location?.results?.residents.length}
+            : location?.results?.residents?.length}
         </li>
       </ul>
     </article>

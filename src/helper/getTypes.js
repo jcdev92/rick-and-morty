@@ -8,6 +8,7 @@ const getTypes = (data) => {
         types.push(location.type.toLowerCase());
       }
     });
+  console.log(types);
   return types;
 };
 

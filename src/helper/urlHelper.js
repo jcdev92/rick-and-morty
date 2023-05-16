@@ -14,7 +14,7 @@ const getUrl = (searchInfo, data) => {
     url = `https://rickandmortyapi.com/api/location/?type=${param}`;
   } else if (isNaN(searchInfo)) {
     url = `https://rickandmortyapi.com/api/location/?name=${param}`;
-  } else {
+  } else if (!isNaN(searchInfo)) {
     url = `https://rickandmortyapi.com/api/location/${param}`;
   }
 

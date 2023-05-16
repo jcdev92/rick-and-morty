@@ -46,12 +46,22 @@ function App() {
             )}
           </>
         )}
-        {data?.info?.count === 1 && (
+        {(data?.info?.count === 1 && (
           <div className="card__container">
-            <LocationCard location={data} />
+            {data?.results?.map((location) => (
+              <div key={location.url} className="card__container">
+                <LocationCard location={location} />
+              </div>
+            ))}
             <CardContainer location={data} />
           </div>
-        )}
+        )) ||
+          (data?.id && (
+            <div className="card__container">
+              <LocationCard location={data} />
+              <CardContainer location={data} />
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -28,10 +28,11 @@ h3 {
 
 }
 
+
 .Header,
 .Header_img1 {
     width: 100%;
-    height: auto;
+    height: 20vh;
     position: relative;
     overflow-x: hidden;
 }
@@ -41,9 +42,21 @@ h3 {
     min-width: 50%;
     width: calc((100px - 100%) * 1000);
     max-width: 100%;
-    height: auto;
+    height: 20vh;
     top: 4vh;
     left: 28vw;
+}
+
+.Header {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background: #062226;
 }
 
 .nav-bar {
