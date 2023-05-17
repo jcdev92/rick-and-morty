@@ -61,7 +61,7 @@ function App() {
             </div>
           )) ||
           (error && (
-            <h1>It's seems like the {`${searchInfo}`} isn't there try again</h1>
+            <h1>Error: {`${error}`}</h1>
           ))}
       </div>
     </div>

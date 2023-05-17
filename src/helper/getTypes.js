@@ -1,6 +1,8 @@
 // getting the types of the locations
+const url = "https://rickandmortyapi.com/api/location";
+let data = await fetch(url).then((response) => response.json());
 
-const getTypes = (data) => {
+const getTypes = () => {
   const types = [];
   data &&
     data.results?.forEach((location) => {

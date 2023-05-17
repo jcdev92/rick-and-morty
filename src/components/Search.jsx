@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BsSearch } from "react-icons/bs";
 
 const Search = ({ setSearchInfo }) => {
   const [inputValue, setInputValue] = useState("");
@@ -24,7 +25,7 @@ const Search = ({ setSearchInfo }) => {
         value={inputValue}
       />
       <button type="submit" className="search-btn">
-        Search
+        <BsSearch />
       </button>
     </form>
   );
