@@ -59,9 +59,6 @@ function App() {
               <LocationCard location={data} />
               <CardContainer location={data} />
             </div>
-          )) ||
-          (error && (
-            <h1>Error: {`${error}`}</h1>
           ))}
       </div>
     </div>

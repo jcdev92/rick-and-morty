@@ -10,8 +10,13 @@ const getTypes = () => {
         types.push(location.type.toLowerCase());
       }
     });
-  console.log(types);
-  return types;
+
+  // erase repeated types
+  const repeatedTypes = types.filter((type, index) => {
+    return types.indexOf(type) === index;
+  });
+  console.log(repeatedTypes);
+  return repeatedTypes;
 };
 
 export default getTypes;
