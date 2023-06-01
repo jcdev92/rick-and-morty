@@ -26,12 +26,12 @@ function App() {
     <div className="App">
       <Header />
       <div className="container">
-        <NavBar setSearchInfo={setSearchInfo} />
+        <NavBar setSearchInfo={setSearchInfo} setUrl={setUrl}/>
         {data?.info?.count > 1 && (
           <>
             {data.results?.map((location) => (
               <div key={location.url} className="card__container">
-                <LocationCard location={location} />
+                <LocationCard location={location} setUrl={setUrl} />
               </div>
             ))}
             {data.info?.pages > 1 && (

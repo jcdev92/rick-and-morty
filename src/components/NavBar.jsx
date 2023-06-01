@@ -2,9 +2,9 @@ import React from "react";
 import Search from "./Search";
 import { IoLocationSharp } from "react-icons/io5";
 
-const NavBar = ({ setSearchInfo }) => {
+const NavBar = ({ setSearchInfo, setUrl }) => {
   const handleAllLocations = () => {
-    setSearchInfo("");
+    setUrl("https://rickandmortyapi.com/api/location");
   };
   return (
     <div className="nav-bar">
